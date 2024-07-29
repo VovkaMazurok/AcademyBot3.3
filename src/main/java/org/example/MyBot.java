@@ -7,6 +7,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class MyBot extends TelegramLongPollingBot {
 
@@ -68,10 +69,12 @@ public class MyBot extends TelegramLongPollingBot {
         double ethAmount = amount / ethPrice;
         double dogeAmount = amount / dogePrice;
 
+        DecimalFormat df = new DecimalFormat("#.####");
+
         return "For $" + amount + " you can buy:\n"
-                + "BTC: " + btcAmount + "\n"
-                + "ETH: " + ethAmount + "\n"
-                + "DOGE: " + dogeAmount;
+                + "BTC: " + df.format(btcAmount) + "\n"
+                + "ETH: " + df.format(ethAmount) + "\n"
+                + "DOGE: " + df.format(dogeAmount);
     }
 
     @Override
